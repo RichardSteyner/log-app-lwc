@@ -37,7 +37,7 @@ export const postLog = (dataLog) => fetch(URL_LOG_POST,
                                           {
                                             method: 'POST',
                                             headers: {
-                                                      'Content-Type': 'application/json',
+                                                      'Content-Type': 'application/json'
                                                       },
                                             body: JSON.stringify(dataLog)
                                           })
