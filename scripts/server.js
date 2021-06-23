@@ -10,7 +10,7 @@ app.use(helmet.contentSecurityPolicy({
         defaultSrc: ["'self'"],
         scriptSrcElem: ["'self'", "'unsafe-inline'"],
         styleSrc: ["'self'", "'unsafe-inline'"],
-        imgSrc: ["'self'"],
+        imgSrc: ["'self'", '*.salesforce.com'],
         connectSrc: ['https://log-api-spring.herokuapp.com']
     }
 }));
