@@ -8,7 +8,7 @@ const app = express();
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
-        scriptSrcElement: ["'self'", "'unsafe-inline'"],
+        scriptSrcElem: ["'self'", "'unsafe-inline'"],
         styleSrc: ["'self'", "'unsafe-inline'"],
         imgSrc: ["'self'"],
         connectSrc: ['https://log-api-spring.herokuapp.com']
