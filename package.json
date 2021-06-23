@@ -1,0 +1,46 @@
+{
+    "name": "lwc-log-app",
+    "version": "0.0.1",
+    "author": "Steyner",
+    "bugs": "https://github.com/Steyner/lwc-log-app/issues",
+    "dependencies": {
+        "@salesforce-ux/design-system": "^2.15.8",
+        "compression": "^1.7.4",
+        "express": "^4.17.1",
+        "helmet": "^4.6.0",
+        "lightning-base-components": "^1.12.3-alpha"
+    },
+    "devDependencies": {
+        "eslint": "^7.28.0",
+        "eslint-plugin-inclusive-language": "^2.1.1",
+        "husky": "^6.0.0",
+        "lwc-services": "^3.1.1",
+        "prettier": "^2.3.1"
+    },
+    "engines": {
+        "node": ">=10.13.0",
+        "npm": ">=6.4.1",
+        "yarn": ">=1.9.4"
+    },
+    "homepage": "https://github.com/Steyner/lwc-log-app",
+    "keywords": [
+        "lwc"
+    ],
+    "license": "MIT",
+    "repository": "Steyner/lwc-log-app",
+    "scripts": {
+        "build": "lwc-services build -m production -w scripts/webpack.config.js",
+        "build:development": "lwc-services build -w scripts/webpack.config.js",
+        "lint": "eslint ./src/**/*.js",
+        "postinstall": "husky install",
+        "precommit": "npm run prettier:verify && [ $? -eq 0 ] && npm run lint",
+        "prettier": "prettier --write \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
+        "prettier:verify": "prettier --list-different \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
+        "start": "node scripts/server.js",
+        "test:unit": "lwc-services test:unit",
+        "test:unit:coverage": "lwc-services test:unit --coverage",
+        "test:unit:debug": "lwc-services test:unit --debug",
+        "test:unit:watch": "lwc-services test:unit --watch",
+        "watch": "lwc-services watch -w scripts/webpack.config.js"
+    }
+}

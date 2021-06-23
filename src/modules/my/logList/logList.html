@@ -1,0 +1,25 @@
+<template>
+    <div class="list">
+
+        <input class="my-search" type="search" placeholder="Buscar logs..." oninput={handleSearchKeyInput} />
+        <input class="my-button" type="button" value="Nuevo" onclick={handleClickNuevo} />
+
+        <template for:each={logs} for:item="l" for:index="index">
+            <a key={l.id} class="session"
+                data-index={index} onclick={handleLogClick}>
+                <div>
+                    <p class="title">{l.titulo}</p>
+                    <!--<p class="icon time">{l.tipo}</p>
+                    <p class="icon room">{l.detalleTipo}</p>-->
+                    <p class="icon">{l.tipo} - {l.detalleTipo}</p>
+                </div>
+                <!--<div class="speaker-pictures">
+                <template for:each={l.speakers} for:item="speaker">
+                    <img key={speaker.id} src={speaker.pictureUrl}
+                    alt={speaker.name} title={speaker.name}>
+                </template>
+                </div>-->
+            </a>
+        </template>
+    </div>
+  </template>
