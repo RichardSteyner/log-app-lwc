@@ -8,7 +8,10 @@ const app = express();
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
-        connectSrc: ["'https://log-api-spring.herokuapp.com'"]
+        scriptSrcElement: ["'self'", "'unsafe-inline'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        imgSrc: ["'self'"],
+        connectSrc: ['https://log-api-spring.herokuapp.com']
     }
 }));
 app.use(compression());
