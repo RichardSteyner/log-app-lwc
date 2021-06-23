@@ -36,7 +36,10 @@ export const getFilterLogs = (filtroKey) => fetch(`${URL_LOG_FILTER_GET}${filtro
 export const postLog = (dataLog) => fetch(URL_LOG_POST,
                                           {
                                             method: 'POST',
-                                            headers: {'Content-Type': 'application/json'},
+                                            headers: {
+                                                      'Content-Type': 'application/json',
+                                                      'Content-Security-Policy': 'default-src \'self\' *.herokuapp.com'
+                                                      },
                                             body: JSON.stringify(dataLog)
                                           })
   .then(response => {
