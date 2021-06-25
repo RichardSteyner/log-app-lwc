@@ -36,9 +36,11 @@
                             value={solucion} onchange={handleChangeInput}></lightning-textarea>
     </div>
 
-    <div class="slds-align_absolute-center">
-        <lightning-button variant="brand" label="Guardar Log" title="Primary action" disabled={camposCompletados} 
-                onclick={handleNuevoLogClick} class="slds-m-left_x-small"></lightning-button>
-    </div>
+    <template if:true={isButtonVisible}>
+        <div class="slds-align_absolute-center">
+            <lightning-button variant="brand" label="Guardar Log" title="Primary action" disabled={camposCompletados} 
+                    onclick={handleNuevoLogClick} class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </template>
 
 </template>

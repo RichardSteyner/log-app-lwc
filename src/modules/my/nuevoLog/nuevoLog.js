@@ -9,6 +9,8 @@ export default class SessionDetails extends LightningElement {
   descripcion = '';
   solucion = '';
 
+  isButtonVisible = true;
+
   get opciones() {
       return [
           { label: 'Aplicación', value: 'Aplicación' },
@@ -53,7 +55,7 @@ export default class SessionDetails extends LightningElement {
     }
 
     handleNuevoLogClick() {
-      console.log('Nuevo');
+      this.isButtonVisible = false;
         const logAInsertar = {
             titulo: this.titulo,
             tipo: this.tipo,
