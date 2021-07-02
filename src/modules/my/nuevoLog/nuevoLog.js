@@ -64,10 +64,35 @@ export default class SessionDetails extends LightningElement {
             solucion: this.solucion,
             vigencia: true
         };
-        postLog(logAInsertar).then(result => {
+        postLog(logAInsertar)
+        .then(result => {
             //console.log(result);
-            this.navegarALista();
+            this.handleShowModal('Log guardado.');
+            this.limpiarControles(true)
+            //this.navegarALista();
+        })
+        .catch(err => {
+          this.handleShowModal('Error al guardar Log. --> Justo en la capacitación :/')
+          console.log(err);
+          this.limpiarControles(false)
         });
+    }
+
+    handleShowModal(msj) {
+        const modal = this.template.querySelector("my-modal-popup");
+        modal.show(msj);
+    }
+
+    limpiarControles(logCreado) {
+      if(logCreado){
+        this.tipo = 'Aplicación';
+        this.titulo = '';
+        this.detalletipo = '';
+        this.descripcion = '';
+        this.solucion = '';
+      }
+
+      this.isButtonVisible = true;
     }
 
 }
