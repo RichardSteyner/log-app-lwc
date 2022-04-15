@@ -37,11 +37,16 @@
     </div>
 
     <div class="slds-p-around_medium lgc-bg">
-        <lightning-input-rich-text
+        <!--<lightning-input-rich-text
             name="input_codigo" placeholder="" label="Ingrese Código Ejemplo"
             value={codigoclave}
             onchange={handleChange}>
-        </lightning-input-rich-text>
+        </lightning-input-rich-text>-->
+        <div id="editor">
+            <p>Hello World!</p>
+            <p>Some initial <strong>bold</strong> text</p>
+            <p><br></p>
+        </div>
     </div>
 
     <template if:true={isButtonVisible}>
