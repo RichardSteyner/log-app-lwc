@@ -36,6 +36,12 @@
                             value={solucion} onchange={handleChangeInput}></lightning-textarea>
     </div>
 
+    <div class="slds-p-around_medium lgc-bg">
+        <lightning-textarea name="input_codigo" placeholder="" label="Ingrese Código Ejemplo" required 
+                            message-when-value-missing="Por favor ingrese código de ejemplo" 
+                            value={codigoclave} onchange={handleChangeInput}></lightning-textarea>
+    </div>
+
     <template if:true={isButtonVisible}>
         <div class="slds-align_absolute-center">
             <lightning-button variant="brand" label="Guardar Log" title="Primary action" disabled={camposCompletados} 

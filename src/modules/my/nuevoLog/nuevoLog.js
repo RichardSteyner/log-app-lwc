@@ -7,6 +7,7 @@ export default class SessionDetails extends LightningElement {
   titulo = '';
   detalletipo = '';
   descripcion = '';
+  codigoclave = '';
   solucion = '';
 
   isButtonVisible = true;
@@ -51,6 +52,8 @@ export default class SessionDetails extends LightningElement {
         this.descripcion = event.target.value;
       } else if(event.target.name==='input_solucion'){
         this.solucion = event.target.value;
+      } else if(event.target.name==='input_codigo'){
+        this.codigoclave = event.target.value;
       }
     }
 
@@ -62,6 +65,7 @@ export default class SessionDetails extends LightningElement {
             detalleTipo: this.detalletipo,
             descripcion: this.descripcion,
             solucion: this.solucion,
+            codigoClave: this.codigoclave, 
             vigencia: true
         };
         postLog(logAInsertar)
@@ -90,6 +94,7 @@ export default class SessionDetails extends LightningElement {
         this.detalletipo = '';
         this.descripcion = '';
         this.solucion = '';
+        this.codigoclave = '';
       }
 
       this.isButtonVisible = true;
