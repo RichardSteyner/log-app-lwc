@@ -7,13 +7,17 @@
         <div class="log-list">
             <my-card cabecera="Descripción" texto={log.descripcion}></my-card>
             <my-card cabecera="Solución" texto={log.solucion}></my-card>
-            <template if:true={codigoEjemploNotBlank}>
-                <my-card cabecera="Código Ejemplo" texto={log.codigoClave}></my-card>
-            </template>
         </div>
+
         <template if:true={codigoEjemploNotBlank}>
             <div class="log-list">
                 <my-card cabecera="Código Ejemplo" texto={log.codigoClave}></my-card>
+            </div>
+        </template>
+
+        <template if:true={codigoEjemploNotBlank}>
+            <div class="log-list">
+                <lightning-formatted-rich-text value={log.codigoClave}></lightning-formatted-rich-text>
             </div>
         </template>
     </template>

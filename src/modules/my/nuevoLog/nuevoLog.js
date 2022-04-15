@@ -1,5 +1,7 @@
 import { LightningElement, api } from 'lwc';
-import { postLog } from 'data/logService';
+import { postLog } from 'data/logService';  
+
+
 
 export default class SessionDetails extends LightningElement {
 
@@ -11,6 +13,16 @@ export default class SessionDetails extends LightningElement {
   solucion = '';
 
   isButtonVisible = true;
+
+  renderedCallback() {
+      console.log('renderedCallback');
+      console.log(this.template.querySelector('.editor'));
+      const myContainer = this.template.querySelector('.editor');
+      const options = {
+  theme: 'snow'
+};
+      const editor = new Quill(myContainer, options);  
+  }
 
   get opciones() {
       return [

@@ -16,7 +16,7 @@ export default class SessionDetails extends LightningElement {
     }
 
     get codigoEjemploNotBlank() {
-      return log!=undefined && log!=null && log.codigoClave!=null && log.codigoClave!='';
+      return this.log!=undefined && this.log!=null && this.log.codigoClave!=null && this.log.codigoClave!='';
     }
 
     handleLogsClick() {
