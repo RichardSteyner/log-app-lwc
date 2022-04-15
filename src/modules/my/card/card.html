@@ -7,6 +7,11 @@
                 <!--<p class="icon email">{speaker.email}</p>-->
             </div>
         </div>
-        {texto}
+        <template if:false={isHtml}>
+            <lightning-formatted-rich-text value={texto}></lightning-formatted-rich-text>
+        </template>
+       <template if:true={isHtml}>
+            {texto}
+        </template>
     </div>
 </template>

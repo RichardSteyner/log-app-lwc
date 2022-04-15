@@ -11,17 +11,19 @@ export default class SessionDetails extends LightningElement {
   descripcion = '';
   codigoclave = '';
   solucion = '';
+  editor = null;
 
   isButtonVisible = true;
 
   renderedCallback() {
       console.log('renderedCallback');
-      console.log(this.template.querySelector('.editor'));
+      if(this.editor==null) {
       const myContainer = this.template.querySelector('.editor');
       const options = {
-  theme: 'snow'
-};
-      const editor = new Quill(myContainer, options);  
+        theme: 'snow'
+      };
+      this.editor = new Quill(myContainer, options);
+      }  
   }
 
   get opciones() {
@@ -78,7 +80,7 @@ export default class SessionDetails extends LightningElement {
             detalleTipo: this.detalletipo,
             descripcion: this.descripcion,
             solucion: this.solucion,
-            codigoClave: this.codigoclave, 
+            codigoClave: this.editor.root.innerHTML, 
             vigencia: true
         };
         postLog(logAInsertar)

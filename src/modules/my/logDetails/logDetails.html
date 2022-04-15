@@ -1,25 +1,21 @@
 <template>
 
     <template if:true={log}>
+
         <h2><a href="#" onclick={handleLogsClick}>Logs</a> &gt; {log.titulo}</h2>
         <p class="icon">{log.tipo} - {log.detalleTipo}</p>
         
         <div class="log-list">
-            <my-card cabecera="Descripción" texto={log.descripcion}></my-card>
-            <my-card cabecera="Solución" texto={log.solucion}></my-card>
+            <my-card ishtml=false cabecera="Descripción" texto={log.descripcion}></my-card>
+            <my-card ishtml=false cabecera="Solución" texto={log.solucion}></my-card>
         </div>
 
         <template if:true={codigoEjemploNotBlank}>
             <div class="log-list">
-                <my-card cabecera="Código Ejemplo" texto={log.codigoClave}></my-card>
+                <my-card ishtml=true cabecera="Código Ejemplo" texto={log.codigoClave}></my-card>
             </div>
         </template>
 
-        <template if:true={codigoEjemploNotBlank}>
-            <div class="log-list">
-                <lightning-formatted-rich-text value={log.codigoClave}></lightning-formatted-rich-text>
-            </div>
-        </template>
     </template>
 
 </template>
