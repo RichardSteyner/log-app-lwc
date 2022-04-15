@@ -15,6 +15,10 @@ export default class SessionDetails extends LightningElement {
         return this._logId;
     }
 
+    get codigoEjemploNotBlank() {
+      return log!=undefined && log!=null && log.codigoClave!=null && log.codigoClave!='';
+    }
+
     handleLogsClick() {
         const navigateEvent = new CustomEvent('navigate', {
           detail: {

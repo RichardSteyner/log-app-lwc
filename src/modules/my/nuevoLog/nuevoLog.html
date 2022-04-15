@@ -37,9 +37,11 @@
     </div>
 
     <div class="slds-p-around_medium lgc-bg">
-        <lightning-textarea name="input_codigo" placeholder="" label="Ingrese Código Ejemplo" required 
-                            message-when-value-missing="Por favor ingrese código de ejemplo" 
-                            value={codigoclave} onchange={handleChangeInput}></lightning-textarea>
+        <lightning-input-rich-text
+            name="input_codigo" placeholder="" label="Ingrese Código Ejemplo"
+            value={codigoclave}
+            onchange={handleChange}>
+        </lightning-input-rich-text>
     </div>
 
     <template if:true={isButtonVisible}>

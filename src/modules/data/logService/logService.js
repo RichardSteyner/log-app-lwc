@@ -1,5 +1,5 @@
 const URL = 'https://conference-lwc-app.herokuapp.com/api/sessions';
-const URL_LOG_GET = 'https://log-api-spring.herokuapp.com/logs/pagina?page=0&size=10';
+const URL_LOG_GET = 'https://log-api-spring.herokuapp.com/logs/pagina?page=0&size=20';
 const URL_LOG_FILTER_GET = 'https://log-api-spring.herokuapp.com/logs/filtrar/';
 const URL_LOG_POST = 'https://log-api-spring.herokuapp.com/logs';
 

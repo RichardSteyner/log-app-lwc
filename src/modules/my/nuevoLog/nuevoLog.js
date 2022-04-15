@@ -53,6 +53,7 @@ export default class SessionDetails extends LightningElement {
       } else if(event.target.name==='input_solucion'){
         this.solucion = event.target.value;
       } else if(event.target.name==='input_codigo'){
+        console.log(event.target.value);
         this.codigoclave = event.target.value;
       }
     }
