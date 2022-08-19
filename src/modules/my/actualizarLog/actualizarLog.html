@@ -1,0 +1,58 @@
+<template>
+
+    <h2><a href="#" onclick={handleLogsClick}>Logs</a> &gt; Actualizar Log</h2>
+        
+    <div class="slds-p-around_medium lgc-bg">
+        <lightning-input name="input_titulo" type="text" label="Ingrese título" required 
+                           value={titulo} onchange={handleChangeInput}></lightning-input>
+    </div>
+
+    <div class="slds-p-around_medium lgc-bg">
+        <lightning-combobox
+            name="combo_tipo"
+            label="Tipo"
+            value={tipo}
+            placeholder="Seleccione tipo"
+            options={opciones}
+            onchange={handleChangeCombo} ></lightning-combobox>
+    </div>
+
+    <div class="slds-p-around_medium lgc-bg">
+        <lightning-input name="input_detalletipo" type="text" label="Especifique el Tipo" required
+                            value={detalletipo} onchange={handleChangeInput}></lightning-input>
+    </div>
+
+    <div class="slds-p-around_medium lgc-bg">
+        <lightning-textarea name="input_descripcion" placeholder="" label="Ingrese Descripción" required 
+                            maxlength="240" message-when-too-long="Llegó al límite de caracteres (240)." 
+                            message-when-value-missing="Por favor ingrese descripción" 
+                            value={descripcion} onchange={handleChangeInput}></lightning-textarea>
+    </div>
+
+    <div class="slds-p-around_medium lgc-bg">
+        <lightning-textarea name="input_solucion" placeholder="" label="Ingrese Solución" required 
+                            maxlength="240" message-when-too-long="Llegó al límite de caracteres (240)." 
+                            message-when-value-missing="Por favor ingrese solución" 
+                            value={solucion} onchange={handleChangeInput}></lightning-textarea>
+    </div>
+
+    <div class="slds-p-around_medium lgc-bg">
+        <!--<lightning-input-rich-text
+            name="input_codigo" placeholder="" label="Ingrese Código Ejemplo"
+            value={codigoclave}
+            onchange={handleChange}>
+        </lightning-input-rich-text>-->
+        <div class="editor" lwc:dom="manual">
+        </div>
+    </div>
+
+    <template if:true={isButtonVisible}>
+        <div class="slds-align_absolute-center">
+            <lightning-button variant="brand" label="Guardar Log" title="Primary action" disabled={camposCompletados} 
+                    onclick={handleActualizarLogClick} class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </template>
+
+    <my-modal-popup></my-modal-popup>
+
+</template>

@@ -5,8 +5,8 @@
         <input class="my-button" type="button" value="Nuevo" onclick={handleClickNuevo} />
 
         <template for:each={logs} for:item="l" for:index="index">
-            <a key={l.id} class="session"
-                data-index={index} onclick={handleLogClick}>
+            <a key={l._id} class="session"
+                >
                 <div>
                     <p class="title">{l.titulo}</p>
                     <!--<p class="icon time">{l.tipo}</p>
@@ -19,6 +19,11 @@
                     alt={speaker.name} title={speaker.name}>
                 </template>
                 </div>-->
+                <div style="text-align: center;">
+                    <input class="my-button" type="button" value="Ver" data-index={index} onclick={handleLogClick} />
+                    <br><br>
+                    <input class="my-button" type="button" value="Actualizar" data-index={index} onclick={handleClickActualizar} />
+                </div>
             </a>
         </template>
     </div>

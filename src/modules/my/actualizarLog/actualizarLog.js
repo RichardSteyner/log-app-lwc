@@ -1,45 +1,68 @@
-import { LightningElement } from 'lwc';
-import { postLog } from 'data/logService';
-import { token } from 'data/loginService';
+import { LightningElement, api } from 'lwc';
+import { getLog, putLog } from 'data/logService';
+import { user, token } from 'data/loginService';
 
 export default class SessionDetails extends LightningElement {
 
-  tipo = 'Aplicación';
-  titulo = '';
-  detalletipo = '';
-  descripcion = '';
-  codigoclave = '';
-  solucion = '';
-  editor = null;
+    tipo = 'Aplicación';
+    titulo = '';
+    detalletipo = '';
+    descripcion = '';
+    codigoclave = '';
+    solucion = '';
+    editor = null;
 
-  isButtonVisible = true;
+    isButtonVisible = true;
 
-  myToken = '';
+    myToken = '';
 
-  connectedCallback() {
-    this.myToken = token();
-  }
+    log;
+    
+    @api
+    set logId(id) {
+        this._logId = id;
+        this.log = getLog(id);
+        this.titulo = this.log.titulo;
+        this.tipo = this.log.tipo;
+        this.detalletipo = this.log.detalleTipo;
+        this.descripcion = this.log.descripcion;
+        this.solucion = this.log.solucion;
+        this.codigoclave = this.log.codigoClave;
+    }
 
-  renderedCallback() {
-      if(this.editor==null) {
-      const myContainer = this.template.querySelector('.editor');
-      const options = {
-        theme: 'snow'
-      };
-      this.editor = new Quill(myContainer, options);
-      }
-  }
+    get logId() {
+        return this._logId;
+    }
+    
+    get codigoEjemploNotBlank() {
+      return this.log!=undefined && this.log!=null && this.log.codigoClave!=null && this.log.codigoClave!='';
+    }
 
-  get opciones() {
-      return [
-          { label: 'Aplicación', value: 'Aplicación' },
-          { label: 'Lenguaje', value: 'Lenguaje' }
-      ];
-  }
+    connectedCallback() {
+      this.myToken = token();
+    }
 
-  get camposCompletados() {
-    return this.titulo=='' || this.detalletipo=='' || this.descripcion=='' || this.solucion=='';
-  }
+    renderedCallback() {
+        if(this.editor==null) {
+            const myContainer = this.template.querySelector('.editor');
+            const options = {
+                theme: 'snow'
+            };
+            this.editor = new Quill(myContainer, options);
+            this.editor.root.innerHTML = this.codigoclave;
+        }
+    }
+
+    get opciones() {
+        return [
+            { label: 'Aplicación', value: 'Aplicación' },
+            { label: 'Lenguaje', value: 'Lenguaje' }
+        ];
+    }
+
+    get camposCompletados() {
+        return this.titulo=='' || this.detalletipo=='' || this.descripcion=='' || this.solucion=='';
+    }
 
     handleLogsClick() {
       this.navegarALista();
@@ -72,9 +95,9 @@ export default class SessionDetails extends LightningElement {
       }
     }
 
-    handleNuevoLogClick() {
+    handleActualizarLogClick() {
       this.isButtonVisible = false;
-        const logAInsertar = {
+        const logAActualizar = {
             titulo: this.titulo,
             tipo: this.tipo,
             detalleTipo: this.detalletipo,
@@ -83,7 +106,7 @@ export default class SessionDetails extends LightningElement {
             codigoClave: this.editor.root.innerHTML, 
             vigencia: true
         };
-        postLog(logAInsertar, this.myToken)
+        putLog(logAActualizar, this.myToken, this.log._id)
         .then(result => {
             if(result.msg) {
               this.handleShowModal(`Error al guardar el log ${result.msg}`);
@@ -91,11 +114,11 @@ export default class SessionDetails extends LightningElement {
             } else {
               this.handleShowModal('Log guardado.');
               this.limpiarControles(true);
+              this.navegarALista();
             }
-            //this.navegarALista();
         })
         .catch(err => {
-          this.handleShowModal('Error al guardar Log. --> Justo en la capacitación :/')
+          this.handleShowModal('Error al guardar Log.')
           console.log(err);
           this.limpiarControles(false)
         });
@@ -106,8 +129,8 @@ export default class SessionDetails extends LightningElement {
         modal.show(msj);
     }
 
-    limpiarControles(logCreado) {
-      if(logCreado){
+    limpiarControles(logActualizado) {
+      if(logActualizado){
         this.tipo = 'Aplicación';
         this.titulo = '';
         this.detalletipo = '';

@@ -13,7 +13,7 @@ export default class SessionList extends LightningElement {
 
     handleSearchKeyInput(event) {
         const filtroKey = event.target.value.toLowerCase();
-        if(filtroKey !== undefined && filtroKey!=''){
+        if(filtroKey !== undefined && filtroKey!==''){
             getFilterLogs(filtroKey).then(result => {
                 this.logs = this.allLogs = result;
             });
@@ -30,16 +30,27 @@ export default class SessionList extends LightningElement {
         const navigateEvent = new CustomEvent('navigate', {
           detail: {
             state: 'details',
-            logId: this.logs[index].id
+            logId: this.logs[index]._id
           }
         });
         this.dispatchEvent(navigateEvent);
     }
 
-    handleClickNuevo(event) {
+    handleClickNuevo() {
         const navigateEvent = new CustomEvent('navigate', {
           detail: {
             state: 'nuevo'
+          }
+        });
+        this.dispatchEvent(navigateEvent);
+    }
+
+    handleClickActualizar(event) {
+        const index = event.currentTarget.dataset.index;
+        const navigateEvent = new CustomEvent('navigate', {
+          detail: {
+            state: 'actualizar',
+            logId: this.logs[index]._id
           }
         });
         this.dispatchEvent(navigateEvent);

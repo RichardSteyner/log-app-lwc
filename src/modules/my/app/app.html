@@ -16,6 +16,10 @@
         <template if:true={isStateNuevo}>
             <my-nuevo-log onnavigate={handleNavigate}></my-nuevo-log>
         </template>
+
+        <template if:true={isStateActualizar}>
+            <my-actualizar-log log-id={logId} onnavigate={handleNavigate}></my-actualizar-log>
+        </template>
         
     </main>
 </template>
