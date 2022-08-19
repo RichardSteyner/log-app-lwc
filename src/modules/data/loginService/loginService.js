@@ -11,7 +11,6 @@ export const login = async (dataLogin) => fetch(URL_NODE_LOGIN,
                                             body: JSON.stringify(dataLogin)
                                           })
   .then(response => {
-    //console.log(response.json());
     return response.json();
   })
   .then(result => {
