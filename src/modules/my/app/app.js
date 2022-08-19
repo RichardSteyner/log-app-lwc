@@ -45,9 +45,8 @@ export default class App extends LightningElement {
     }
 
     async loginSteyner() {
-        let passwordGenerate = '';
-        for(let i=0; i<6; i++) passwordGenerate = passwordGenerate + (i+1).toString();
-        login({correo: 'steyner.urupeque.s@gmail.com', password: passwordGenerate});
+        let passwordGenerate = 'admin';
+        login({correo: 'admin', password: passwordGenerate});
     }
 
 }

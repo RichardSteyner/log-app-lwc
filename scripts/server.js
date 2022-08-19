@@ -11,7 +11,7 @@ app.use(helmet.contentSecurityPolicy({
         scriptSrcElem: ["'self'", "'unsafe-inline'", '*.quilljs.com'],
         styleSrc: ["'self'", "'unsafe-inline'", '*.quilljs.com'],
         imgSrc: ["'self'", '*.salesforce.com'],
-        connectSrc: ['https://log-api-spring.herokuapp.com']
+        connectSrc: ['https://steyner-server-node.herokuapp.com']
     }
 }));
 app.use(compression());
